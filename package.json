@@ -16,7 +16,7 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@portabletext/editor": "3.3.7",
+    "@portabletext/editor": "3.3.6",
     "@sanity/block-tools": "3.67.1",
     "@sanity/schema": "3.67.1",
     "@sanity/types": "3.67.1",
