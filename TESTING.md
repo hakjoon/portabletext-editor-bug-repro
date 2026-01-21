@@ -24,26 +24,49 @@
 
 ## Comparing Versions
 
-### Test with working version (3.3.6):
+### Quick Way: Use Git Branches
 
+This repository has branches for both versions:
+
+**Test with working version (3.3.6):**
 ```bash
-npm install @portabletext/editor@3.3.6
+git checkout working-3.3.6
+npm install
 npm run dev
 ```
 
 Result: Clicking "Transform Tickers" immediately shows the styled ticker objects ✅
 
-### Test with broken version (3.3.7):
-
+**Test with broken version (3.3.7):**
 ```bash
-npm install @portabletext/editor@3.3.7
+git checkout main
+npm install
 npm run dev
 ```
 
 Result: Clicking "Transform Tickers" doesn't update the display ❌
 
-### Test with latest version (3.3.16):
+### Alternative: Manual Version Installation
 
+You can also test by manually changing versions:
+
+**Test with 3.3.6 (working):**
+```bash
+npm install @portabletext/editor@3.3.6
+npm run dev
+```
+
+Result: Works correctly ✅
+
+**Test with 3.3.7 (broken):**
+```bash
+npm install @portabletext/editor@3.3.7
+npm run dev
+```
+
+Result: Bug present ❌
+
+**Test with latest version (3.3.16):**
 ```bash
 npm install @portabletext/editor@3.3.16
 npm run dev

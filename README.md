@@ -66,23 +66,45 @@ This happens because the editor's new `isEqualValues` function fails to detect t
 
 ## Testing Different Versions
 
-To test with version 3.3.6 (which works correctly):
+### Quick Way: Use the working-3.3.6 Branch
 
+This repository has a `working-3.3.6` branch already configured with version 3.3.6:
+
+```bash
+# Switch to the working version
+git checkout working-3.3.6
+npm install
+npm run dev
+```
+
+With 3.3.6, clicking "Transform Tickers" immediately shows the styled ticker badges. ✅
+
+To switch back to the broken version:
+
+```bash
+# Switch to the broken version
+git checkout main
+npm install
+npm run dev
+```
+
+With 3.3.7+, clicking "Transform Tickers" causes the text to disappear. ❌
+
+### Alternative: Manual Version Installation
+
+You can also manually install different versions without switching branches:
+
+**Test with 3.3.6 (working):**
 ```bash
 npm install @portabletext/editor@3.3.6
 npm run dev
 ```
 
-With 3.3.6, clicking "Transform Tickers" immediately shows the styled ticker badges.
-
-To test with version 3.3.7+ (which has the bug):
-
+**Test with 3.3.7+ (broken):**
 ```bash
 npm install @portabletext/editor@3.3.7
 npm run dev
 ```
-
-With 3.3.7+, clicking "Transform Tickers" causes the text to disappear.
 
 ## Technical Details
 
