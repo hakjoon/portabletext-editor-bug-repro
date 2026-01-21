@@ -90,6 +90,36 @@ npm run dev
 
 With 3.3.7+, clicking "Transform Tickers" causes the text to disappear. ❌
 
+### Side-by-Side Comparison: Use Git Worktrees
+
+For the best comparison experience, run both versions simultaneously using git worktrees:
+
+```bash
+# Create a worktree for the working version
+git worktree add ../portabletext-editor-bug-repro-working working-3.3.6
+
+# Terminal 1 (broken version - 3.3.7)
+cd /Users/pwoods/Projects/portabletext-editor-bug-repro
+npm run dev
+# Opens on http://localhost:5173
+
+# Terminal 2 (working version - 3.3.6)
+cd /Users/pwoods/Projects/portabletext-editor-bug-repro-working
+npm install
+npm run dev -- --port 5174
+# Opens on http://localhost:5174
+```
+
+Now open both URLs in your browser side-by-side to compare the behavior! Each has its own:
+- Separate `node_modules` with the correct package version
+- Separate localStorage (different ports = different storage)
+- No need to switch branches or reinstall packages
+
+**Cleanup when done:**
+```bash
+git worktree remove ../portabletext-editor-bug-repro-working
+```
+
 ### Alternative: Manual Version Installation
 
 You can also manually install different versions without switching branches:

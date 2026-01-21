@@ -46,6 +46,46 @@ npm run dev
 
 Result: Clicking "Transform Tickers" doesn't update the display ❌
 
+### Side-by-Side: Run Both Versions Simultaneously
+
+The best way to compare is running both versions at the same time using git worktrees:
+
+**Step 1: Create a worktree**
+```bash
+# From the main repo directory
+git worktree add ../portabletext-editor-bug-repro-working working-3.3.6
+```
+
+**Step 2: Run both versions**
+
+Terminal 1 (broken - 3.3.7):
+```bash
+cd /Users/pwoods/Projects/portabletext-editor-bug-repro
+npm run dev
+```
+Opens on http://localhost:5173
+
+Terminal 2 (working - 3.3.6):
+```bash
+cd /Users/pwoods/Projects/portabletext-editor-bug-repro-working
+npm install
+npm run dev -- --port 5174
+```
+Opens on http://localhost:5174
+
+**Step 3: Compare side-by-side**
+1. Open both URLs in your browser
+2. Type the same text in both: `Check out (NYSE:AAPL)`
+3. Click "Transform Tickers" in both
+4. Watch the difference:
+   - Port 5173 (3.3.7): Text disappears ❌
+   - Port 5174 (3.3.6): Ticker badge appears ✅
+
+**Cleanup:**
+```bash
+git worktree remove ../portabletext-editor-bug-repro-working
+```
+
 ### Alternative: Manual Version Installation
 
 You can also test by manually changing versions:
