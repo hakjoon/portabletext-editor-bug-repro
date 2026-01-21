@@ -66,75 +66,28 @@ This happens because the editor's new `isEqualValues` function fails to detect t
 
 ## Testing Different Versions
 
-### Quick Way: Use the working-3.3.6 Branch
+This repository includes a `working-3.3.6` branch for easy comparison:
 
-This repository has a `working-3.3.6` branch already configured with version 3.3.6:
-
+**Quick test (switch branches):**
 ```bash
-# Switch to the working version
-git checkout working-3.3.6
-npm install
-npm run dev
+git checkout working-3.3.6  # Working version ✅
+git checkout main           # Broken version ❌
 ```
 
-With 3.3.6, clicking "Transform Tickers" immediately shows the styled ticker badges. ✅
-
-To switch back to the broken version:
-
+**Side-by-side comparison (recommended):**
 ```bash
-# Switch to the broken version
-git checkout main
-npm install
-npm run dev
-```
-
-With 3.3.7+, clicking "Transform Tickers" causes the text to disappear. ❌
-
-### Side-by-Side Comparison: Use Git Worktrees
-
-For the best comparison experience, run both versions simultaneously using git worktrees:
-
-```bash
-# Create a worktree for the working version
+# Run both versions simultaneously using git worktrees
 git worktree add ../portabletext-editor-bug-repro-working working-3.3.6
 
-# Terminal 1 (broken version - 3.3.7)
-cd /Users/pwoods/Projects/portabletext-editor-bug-repro
+# Terminal 1: main branch on http://localhost:5173
 npm run dev
-# Opens on http://localhost:5173
 
-# Terminal 2 (working version - 3.3.6)
-cd /Users/pwoods/Projects/portabletext-editor-bug-repro-working
-npm install
-npm run dev -- --port 5174
-# Opens on http://localhost:5174
+# Terminal 2: working-3.3.6 branch on http://localhost:5174
+cd ../portabletext-editor-bug-repro-working
+npm install && npm run dev -- --port 5174
 ```
 
-Now open both URLs in your browser side-by-side to compare the behavior! Each has its own:
-- Separate `node_modules` with the correct package version
-- Separate localStorage (different ports = different storage)
-- No need to switch branches or reinstall packages
-
-**Cleanup when done:**
-```bash
-git worktree remove ../portabletext-editor-bug-repro-working
-```
-
-### Alternative: Manual Version Installation
-
-You can also manually install different versions without switching branches:
-
-**Test with 3.3.6 (working):**
-```bash
-npm install @portabletext/editor@3.3.6
-npm run dev
-```
-
-**Test with 3.3.7+ (broken):**
-```bash
-npm install @portabletext/editor@3.3.7
-npm run dev
-```
+See [TESTING.md](TESTING.md) for detailed testing instructions, expected behaviors, and more testing approaches.
 
 ## Technical Details
 
