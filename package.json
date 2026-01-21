@@ -1,0 +1,26 @@
+{
+  "name": "portabletext-editor-bug-repro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal reproduction for @portabletext/editor 3.3.7 regression",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@portabletext/editor": "3.3.7",
+    "@sanity/block-tools": "3.67.1",
+    "@sanity/schema": "3.67.1",
+    "@sanity/types": "3.67.1",
+    "@sanity/util": "3.67.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  }
+}
