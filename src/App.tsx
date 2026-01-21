@@ -132,15 +132,15 @@ const renderChild = (props: any) => {
   return props.children
 }
 
-// Transform button that calls the parent's onTransform
-function TransformButton({ onTransform }: { onTransform: () => void }) {
+// Transform button that uses the editor directly
+function TransformButton({ onTransform }: { onTransform: (editorValue: PortableTextBlock[]) => void }) {
   const editor = usePortableTextEditor()
 
   const handleClick = () => {
     const currentValue = PortableTextEditor.getValue(editor)
     if (!currentValue) return
 
-    onTransform()
+    onTransform(currentValue)
   }
 
   return (
@@ -158,10 +158,10 @@ function EditorComponent() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(value))
   }, [value])
 
-  const handleTransform = () => {
-    const transformed = transformTextToTickers(value)
+  const handleTransform = (editorValue: PortableTextBlock[]) => {
+    const transformed = transformTextToTickers(editorValue)
 
-    console.log('Before transformation:', JSON.stringify(value, null, 2))
+    console.log('Before transformation:', JSON.stringify(editorValue, null, 2))
     console.log('After transformation:', JSON.stringify(transformed, null, 2))
 
     // This updates the value prop passed to PortableTextEditor
@@ -213,9 +213,10 @@ function EditorComponent() {
       <div className="editor-wrapper">
         <PortableTextEditor
           onChange={(change: any) => {
+            // Handle different change formats
             if (Array.isArray(change)) {
               setValue(change)
-            } else if (change?.value) {
+            } else if (change?.value && Array.isArray(change.value)) {
               setValue(change.value)
             }
           }}
