@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "description": "Minimal reproduction for @portabletext/editor 3.3.7 regression",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hakjoon/portabletext-editor-bug-repro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hakjoon/portabletext-editor-bug-repro/issues"
+  },
+  "homepage": "https://github.com/hakjoon/portabletext-editor-bug-repro#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build"

@@ -19,22 +19,22 @@ This creates two branches:
 # Create a new repo at: https://github.com/new
 # Then:
 
-git remote add origin git@github.com:YOUR_USERNAME/portabletext-bug-repro.git
+git remote add origin git@github.com:hakjoon/portabletext-bug-repro.git
 git push -u origin main
 git push -u origin working-3.3.6
 ```
 
 ### 3. Get Your Demo URLs
 
-Replace `YOUR_USERNAME` with your GitHub username:
+Replace `hakjoon` with your GitHub username:
 
 **StackBlitz (recommended):**
-- Broken: `https://stackblitz.com/github/YOUR_USERNAME/portabletext-bug-repro/tree/main`
-- Working: `https://stackblitz.com/github/YOUR_USERNAME/portabletext-bug-repro/tree/working-3.3.6`
+- Broken: `https://stackblitz.com/github/hakjoon/portabletext-bug-repro/tree/main`
+- Working: `https://stackblitz.com/github/hakjoon/portabletext-bug-repro/tree/working-3.3.6`
 
 **CodeSandbox:**
-- Broken: `https://codesandbox.io/s/github/YOUR_USERNAME/portabletext-bug-repro/tree/main`
-- Working: `https://codesandbox.io/s/github/YOUR_USERNAME/portabletext-bug-repro/tree/working-3.3.6`
+- Broken: `https://codesandbox.io/s/github/hakjoon/portabletext-bug-repro/tree/main`
+- Working: `https://codesandbox.io/s/github/hakjoon/portabletext-bug-repro/tree/working-3.3.6`
 
 ### 4. Test Your Demos
 
@@ -51,10 +51,10 @@ Replace `YOUR_USERNAME` with your GitHub username:
 ## Live Demos
 
 **🐛 Broken (v3.3.7):**
-https://stackblitz.com/github/YOUR_USERNAME/portabletext-bug-repro/tree/main
+https://stackblitz.com/github/hakjoon/portabletext-bug-repro/tree/main
 
 **✅ Working (v3.3.6):**
-https://stackblitz.com/github/YOUR_USERNAME/portabletext-bug-repro/tree/working-3.3.6
+https://stackblitz.com/github/hakjoon/portabletext-bug-repro/tree/working-3.3.6
 ```
 
 ---

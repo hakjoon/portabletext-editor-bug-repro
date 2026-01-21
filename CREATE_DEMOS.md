@@ -10,7 +10,7 @@ git init
 git add .
 git commit -m "Initial commit: PortableText Editor 3.3.7 bug reproduction"
 git branch -M main
-git remote add origin <your-github-repo-url>
+git remote add origin git@github.com:hakjoon/portabletext-editor-bug-repro.git
 git push -u origin main
 ```
 
@@ -20,7 +20,7 @@ Once pushed to GitHub, you can open it directly in StackBlitz:
 
 **For version 3.3.7 (broken):**
 ```
-https://stackblitz.com/github/<your-username>/<repo-name>
+https://stackblitz.com/github/hakjoon/portabletext-editor-bug-repro
 ```
 
 **For version 3.3.6 (working):**
