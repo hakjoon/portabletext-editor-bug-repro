@@ -2,6 +2,8 @@
 
 This is a minimal reproduction of a regression bug introduced in `@portabletext/editor@3.3.7` where the editor fails to re-render when text spans are programmatically transformed into inline block objects.
 
+> **Note:** This bug has been fixed in version 4.3.2. See the `react19-4.3.2` branch to test the fixed version.
+
 ## Bug Description
 
 After upgrading from version 3.3.6 to 3.3.7, the Portable Text Editor no longer re-renders when text spans are transformed into inline objects. The content is correctly updated in the document state (as shown in console logs and debug output), but the visual representation doesn't update until the page is reloaded.
@@ -11,6 +13,7 @@ After upgrading from version 3.3.6 to 3.3.7, the Portable Text Editor no longer 
 - ✅ **3.3.6** - Works correctly
 - ❌ **3.3.7** - Bug first appears
 - ❌ **3.3.8 - 3.3.16** - Bug persists
+- ✅ **4.3.2** - Bug fixed (tested with React 19)
 
 ## Root Cause
 
@@ -66,18 +69,24 @@ This happens because the editor's new `isEqualValues` function fails to detect t
 
 ## Testing Different Versions
 
-This repository includes a `working-3.3.6` branch for easy comparison:
+This repository includes multiple branches for easy comparison:
+
+- `working-3.3.6` - Working version with @portabletext/editor@3.3.6 ✅
+- `react19-4.3.2` - Fixed version with @portabletext/editor@4.3.2 and React 19 ✅
+- `main` - Broken version with @portabletext/editor@3.3.7+ ❌
 
 **Quick test (switch branches):**
 ```bash
-git checkout working-3.3.6  # Working version ✅
-git checkout main           # Broken version ❌
+git checkout working-3.3.6   # Working version (3.3.6) ✅
+git checkout react19-4.3.2   # Fixed version (4.3.2) ✅
+git checkout main            # Broken version (3.3.7+) ❌
 ```
 
 **Side-by-side comparison (recommended):**
 ```bash
 # Run both versions simultaneously using git worktrees
 git worktree add ../portabletext-editor-bug-repro-working working-3.3.6
+git worktree add ../portabletext-editor-bug-repro-fixed react19-4.3.2
 
 # Terminal 1: main branch on http://localhost:5173
 npm run dev
@@ -85,6 +94,10 @@ npm run dev
 # Terminal 2: working-3.3.6 branch on http://localhost:5174
 cd ../portabletext-editor-bug-repro-working
 npm install && npm run dev -- --port 5174
+
+# Terminal 3: react19-4.3.2 branch on http://localhost:5175
+cd ../portabletext-editor-bug-repro-fixed
+npm install && npm run dev -- --port 5175
 ```
 
 See [TESTING.md](TESTING.md) for detailed testing instructions, expected behaviors, and more testing approaches.
