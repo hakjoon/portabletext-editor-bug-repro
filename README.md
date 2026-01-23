@@ -2,7 +2,7 @@
 
 This is a minimal reproduction of a regression bug introduced in `@portabletext/editor@3.3.7` where the editor fails to re-render when text spans are programmatically transformed into inline block objects.
 
-> **Note:** This bug has been fixed in version 4.3.2. See the `react19-4.3.2` branch to test the fixed version.
+> **Note:** This bug has been fixed in version 4.3.2. The `main` branch now uses the fixed version. The broken behavior is preserved in the `broken-3.3.7` branch for reference.
 
 ## Bug Description
 
@@ -71,32 +71,32 @@ This happens because the editor's new `isEqualValues` function fails to detect t
 
 This repository includes multiple branches for easy comparison:
 
+- `main` - Fixed version with @portabletext/editor@4.3.2 and React 19 ✅
 - `working-3.3.6` - Working version with @portabletext/editor@3.3.6 ✅
-- `react19-4.3.2` - Fixed version with @portabletext/editor@4.3.2 and React 19 ✅
-- `main` - Broken version with @portabletext/editor@3.3.7+ ❌
+- `broken-3.3.7` - Broken version with @portabletext/editor@3.3.7+ (preserved for reference) ❌
 
 **Quick test (switch branches):**
 ```bash
+git checkout main            # Fixed version (4.3.2) ✅
 git checkout working-3.3.6   # Working version (3.3.6) ✅
-git checkout react19-4.3.2   # Fixed version (4.3.2) ✅
-git checkout main            # Broken version (3.3.7+) ❌
+git checkout broken-3.3.7    # Broken version (3.3.7+) ❌
 ```
 
 **Side-by-side comparison (recommended):**
 ```bash
 # Run both versions simultaneously using git worktrees
 git worktree add ../portabletext-editor-bug-repro-working working-3.3.6
-git worktree add ../portabletext-editor-bug-repro-fixed react19-4.3.2
+git worktree add ../portabletext-editor-bug-repro-broken broken-3.3.7
 
-# Terminal 1: main branch on http://localhost:5173
+# Terminal 1: main branch (fixed) on http://localhost:5173
 npm run dev
 
 # Terminal 2: working-3.3.6 branch on http://localhost:5174
 cd ../portabletext-editor-bug-repro-working
 npm install && npm run dev -- --port 5174
 
-# Terminal 3: react19-4.3.2 branch on http://localhost:5175
-cd ../portabletext-editor-bug-repro-fixed
+# Terminal 3: broken-3.3.7 branch on http://localhost:5175
+cd ../portabletext-editor-bug-repro-broken
 npm install && npm run dev -- --port 5175
 ```
 
